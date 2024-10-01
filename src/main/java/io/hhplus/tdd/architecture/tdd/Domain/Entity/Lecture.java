@@ -20,10 +20,7 @@ public class Lecture {
     private String title;
 
     @Column
-    private String teacher;
-
-    @Column
-    private int Capasity;
+    private String teacherName;
 
     @Column
     private LocalDate lectureDate;
