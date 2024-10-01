@@ -1,0 +1,62 @@
+package io.hhplus.tdd.architecture.tdd.Application.ServiceImpl;
+
+import io.hhplus.tdd.architecture.tdd.Application.Service.LectureService;
+import io.hhplus.tdd.architecture.tdd.Domain.Entity.Lecture;
+import io.hhplus.tdd.architecture.tdd.Domain.Entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.History.LectureHistoryRepository;
+import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.Lecture.LectureRepository;
+import io.hhplus.tdd.architecture.tdd.Validation.LectureValidation;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class LectureServiceImpl implements LectureService {
+
+    private final LectureRepository lectureRepository;
+    private final LectureHistoryRepository lectureHistoryRepository;
+    private final LectureValidation lectureValidation;
+
+//    public LectureServiceImpl(LectureHistoryRepository lectureHistoryRepository, StudentRepository studentRepository, LectureRepository lectureRepository, LectureValidation lectureValidation) {
+//        this.lectureRepository = lectureRepository;
+//        this.lectureHistoryRepository = lectureHistoryRepository;
+//        this.studentRepository = studentRepository;
+//        this.lectureValidation = lectureValidation;
+//    }
+
+    public List<Lecture> getLectureAll() {
+        return lectureRepository.findAll();
+    }
+
+
+    @Transactional
+    public Lecture createLecture(String createTitle) {
+        Lecture lecture = new Lecture();
+        String lectureTitle = lecture.getTitle();
+        lectureValidation.lectureTitleCheck(lectureTitle, createTitle);
+
+        lecture.setTitle(createTitle);
+
+        return lectureRepository.save(lecture);
+    }
+
+    @Transactional
+    public LectureHistory joinLecture(long userId, Long id) {
+        Optional<Lecture> lecture = lectureRepository.findById(id);
+        boolean isLecture = lecture.isPresent();
+        lectureValidation.lectureCheck(isLecture);
+
+        LectureHistory lectureHistory = new LectureHistory();
+        lectureHistory.setId(id);
+        lectureHistory.setUserId(userId);
+        lectureHistory.setJoinDate(LocalDate.now());
+
+        return lectureHistoryRepository.save(lectureHistory);
+    }
+
+}
