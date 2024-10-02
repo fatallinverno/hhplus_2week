@@ -87,9 +87,9 @@ class LectureTest {
         lecture.setId(1L);
         lecture.setTitle("Java");
         lecture.setTeacherName("이경록");
-        lecture.setUserId(3L);
+        lecture.setUserId("LKR");
 
-        long userId = lecture.getUserId();
+        String userId = lecture.getUserId();
         Long lectureId = lecture.getId();
 
         when(lectureService.joinLecture(userId, lectureId)).thenReturn(lecture);
@@ -100,7 +100,7 @@ class LectureTest {
         //then
         assertNotNull(lecture);
         assertEquals("Java", lecture.getTitle());
-        assertEquals(3L, lecture.getUserId());
+        assertEquals("LKR", lecture.getUserId());
     }
 
 }

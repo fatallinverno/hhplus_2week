@@ -17,7 +17,7 @@ public class LectureHistory {
     private Long id;
 
     @Column
-    private long userId;
+    private String userId;
 
     @Column
     private String title;

@@ -8,11 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "student")
-public class Student {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private long seq;
+
+    @Column
+    private String userId;
 
     @Column
     private String password;

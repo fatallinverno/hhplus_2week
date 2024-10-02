@@ -3,6 +3,7 @@ package io.hhplus.tdd.architecture.tdd.application.serviceImpl;
 import io.hhplus.tdd.architecture.tdd.application.service.LectureService;
 import io.hhplus.tdd.architecture.tdd.domain.entity.Lecture;
 import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.domain.entity.User;
 import io.hhplus.tdd.architecture.tdd.infrastructure.repository.history.LectureHistoryRepository;
 import io.hhplus.tdd.architecture.tdd.infrastructure.repository.lecture.LectureRepository;
 import io.hhplus.tdd.architecture.tdd.validation.LectureValidation;
@@ -45,10 +46,14 @@ public class LectureServiceImpl implements LectureService {
     }
 
     @Transactional
-    public LectureHistory joinLecture(long userId, Long id) {
+    public LectureHistory joinLecture(String userId, Long id) {
         Optional<Lecture> lecture = lectureRepository.findById(id);
         boolean isLecture = lecture.isPresent();
         lectureValidation.lectureCheck(isLecture);
+
+        User user = new User();
+        String idUser = user.getUserId();
+        lectureValidation.userIdCheck(userId, idUser);
 
         LectureHistory lectureHistory = new LectureHistory();
         lectureHistory.setId(id);

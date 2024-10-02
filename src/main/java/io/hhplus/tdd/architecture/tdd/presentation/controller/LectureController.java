@@ -28,7 +28,7 @@ public class LectureController {
     }
 
     @GetMapping("{id}/join")
-    public LectureHistory joinLecture(long userId, Long id) {
+    public LectureHistory joinLecture(String userId, Long id) {
         return lectureService.joinLecture(userId, id);
     }
 
