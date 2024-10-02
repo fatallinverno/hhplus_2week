@@ -11,9 +11,10 @@ import java.time.LocalDate;
 @Setter
 @Table(name = "lecture")
 public class Lecture {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long lectureId;
 
     @Column
     private String title;

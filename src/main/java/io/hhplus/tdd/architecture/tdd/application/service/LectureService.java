@@ -9,6 +9,6 @@ public interface LectureService {
 
     List<Lecture> getLectureAll();
     Lecture createLecture(String createTitle);
-    LectureHistory joinLecture(String userId, Long id);
+    LectureHistory joinLecture(String userId, Long lectureId);
 
 }

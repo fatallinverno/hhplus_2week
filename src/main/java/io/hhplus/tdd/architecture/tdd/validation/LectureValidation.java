@@ -11,8 +11,8 @@ public class LectureValidation {
         }
     }
 
-    public void lectureCheck(boolean id) {
-        if(!id) {
+    public void lectureCheck(boolean lectureId) {
+        if(!lectureId) {
             throw new IllegalArgumentException("등록되지 않은 강의 입니다.");
         }
     }

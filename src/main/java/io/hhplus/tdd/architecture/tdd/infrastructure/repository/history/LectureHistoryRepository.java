@@ -11,6 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface LectureHistoryRepository extends JpaRepository<LectureHistory, Long> {
-    @Query("SELECT l FROM LectureHistory l WHERE l.userId = :userId")
-    Optional<Lecture> findByLectureUserId(String userId);
+    @Query("SELECT l FROM LectureHistory l WHERE l.userId = :userId AND l.lectureId = :lectureId")
+    Optional<Lecture> findByLectureUserId(String userId, Long lectureId);
 }
