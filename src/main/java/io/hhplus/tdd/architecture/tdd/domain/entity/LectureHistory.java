@@ -14,7 +14,7 @@ public class LectureHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long lectureId;
 
     @Column
     private String userId;

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,32 +38,45 @@ class LectureTest {
     @DisplayName("강의 목록 Test")
     public void testGetLectureAll() {
         // Given
-        LocalDate today = LocalDate.now();
-
         Lecture lecture1 = new Lecture();
         lecture1.setId(1L);
         lecture1.setTitle("Java");
         lecture1.setTeacherName("자바");
-        lecture1.setLectureDate(today);
 
         Lecture lecture2 = new Lecture();
         lecture2.setId(2L);
         lecture2.setTitle("Python");
         lecture2.setTeacherName("파이썬");
-        lecture2.setLectureDate(today);
 
-        when(lectureService.getLectureAll(today)).thenReturn(Arrays.asList(lecture1, lecture2));
+        when(lectureService.getLectureAll()).thenReturn(Arrays.asList(lecture1, lecture2));
 
         // When
-        List<Lecture> lectures = lectureService.getLectureAll(today);
+        List<Lecture> lectures = lectureService.getLectureAll();
 
         // Then
         assertNotNull(lectures);
         assertEquals(2, lectures.size());
         assertEquals("Java", lectures.get(0).getTitle());
         assertEquals("Python", lectures.get(1).getTitle());
-        assertEquals(today, lectures.get(0).getLectureDate());
-        assertEquals(today, lectures.get(1).getLectureDate());
+    }
+
+    @Test
+    @DisplayName("강의 생성 Test")
+    public void testCreateLecture() {
+        // Given
+        Lecture lecture = new Lecture();
+        lecture.setId(1L);
+        lecture.setTitle("Java");
+        lecture.setTeacherName("이경록");
+
+        when(lectureService.createLecture("Java")).thenReturn(lecture);
+
+        // When
+        Lecture createdLecture = lectureService.createLecture("Java");
+
+        // Then
+        assertNotNull(createdLecture);
+        assertEquals("Java", createdLecture.getTitle());
     }
 
     @Test
