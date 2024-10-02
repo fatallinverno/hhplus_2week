@@ -8,12 +8,11 @@ import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
-    // 특정 날짜와 일치하는 모든 강의 찾기
-    List<Lecture> findAllByLectureDate(LocalDate lectureDate);
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT l FROM Lecture l WHERE l.id = :id")
+    Optional<Lecture> findByIdWithLock(Long id);
 }
