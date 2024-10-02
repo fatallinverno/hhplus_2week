@@ -37,4 +37,15 @@ public class LectureValidationTest {
         assertDoesNotThrow(() -> sut.lectureCheck(lecetureChk));
     }
 
+    @Test
+    @DisplayName("유저 유무 체크")
+    public void testUserCheck() {
+        //Given
+        String userId = "LKR";
+        String idUser = "LKR";
+
+        //When & Then
+        assertDoesNotThrow(() -> sut.userIdCheck(userId, idUser));
+    }
+
 }

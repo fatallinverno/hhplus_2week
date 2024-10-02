@@ -17,4 +17,10 @@ public class LectureValidation {
         }
     }
 
+    public void userIdCheck(String userId, String idUser) {
+        if(!userId.equals(idUser)) {
+            throw new IllegalArgumentException("유저 정보가 없습니다.");
+        }
+    }
+
 }
