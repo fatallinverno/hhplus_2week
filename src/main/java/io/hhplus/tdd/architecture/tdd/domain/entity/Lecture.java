@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Setter
 @Table(name = "lecture")
 public class Lecture {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,6 +20,9 @@ public class Lecture {
 
     @Column
     private String teacherName;
+
+    @Column
+    private int capacity = 30;
 
     @Column
     private LocalDate lectureDate;
