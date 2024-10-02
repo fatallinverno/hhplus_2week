@@ -13,6 +13,6 @@ import java.util.Optional;
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("SELECT l FROM Lecture l WHERE l.id = :id")
-    Optional<Lecture> findByIdWithLock(Long id);
+    @Query("SELECT l.capacity FROM Lecture l WHERE l.lectureId = :lectureId")
+    int findByCapacityLock(Long lectureId);
 }
