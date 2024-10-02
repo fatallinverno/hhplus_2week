@@ -1,10 +1,10 @@
 package io.hhplus.tdd.architecture.tdd;
 
-import io.hhplus.tdd.architecture.tdd.Application.ServiceImpl.LectureServiceImpl;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.Lecture;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.LectureHistory;
-import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.History.LectureHistoryRepository;
-import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.Lecture.LectureRepository;
+import io.hhplus.tdd.architecture.tdd.application.serviceImpl.LectureServiceImpl;
+import io.hhplus.tdd.architecture.tdd.domain.entity.Lecture;
+import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.infrastructure.repository.history.LectureHistoryRepository;
+import io.hhplus.tdd.architecture.tdd.infrastructure.repository.lecture.LectureRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
-package io.hhplus.tdd.architecture.tdd.Presentation.Controller;
+package io.hhplus.tdd.architecture.tdd.presentation.controller;
 
-import io.hhplus.tdd.architecture.tdd.Application.Service.LectureService;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.Lecture;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.application.service.LectureService;
+import io.hhplus.tdd.architecture.tdd.domain.entity.Lecture;
+import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

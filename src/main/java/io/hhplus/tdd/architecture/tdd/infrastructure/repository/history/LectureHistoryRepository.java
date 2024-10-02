@@ -1,7 +1,7 @@
-package io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.History;
+package io.hhplus.tdd.architecture.tdd.infrastructure.repository.history;
 
 
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

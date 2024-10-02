@@ -1,11 +1,11 @@
-package io.hhplus.tdd.architecture.tdd.Application.ServiceImpl;
+package io.hhplus.tdd.architecture.tdd.application.serviceImpl;
 
-import io.hhplus.tdd.architecture.tdd.Application.Service.LectureService;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.Lecture;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.LectureHistory;
-import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.History.LectureHistoryRepository;
-import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.Lecture.LectureRepository;
-import io.hhplus.tdd.architecture.tdd.Validation.LectureValidation;
+import io.hhplus.tdd.architecture.tdd.application.service.LectureService;
+import io.hhplus.tdd.architecture.tdd.domain.entity.Lecture;
+import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.infrastructure.repository.history.LectureHistoryRepository;
+import io.hhplus.tdd.architecture.tdd.infrastructure.repository.lecture.LectureRepository;
+import io.hhplus.tdd.architecture.tdd.validation.LectureValidation;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,6 @@ public class LectureServiceImpl implements LectureService {
     public List<Lecture> getLectureAll() {
         return lectureRepository.findAll();
     }
-
 
     @Transactional
     public Lecture createLecture(String createTitle) {

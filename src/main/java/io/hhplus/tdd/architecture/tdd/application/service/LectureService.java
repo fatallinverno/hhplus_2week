@@ -1,7 +1,7 @@
-package io.hhplus.tdd.architecture.tdd.Application.Service;
+package io.hhplus.tdd.architecture.tdd.application.service;
 
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.Lecture;
-import io.hhplus.tdd.architecture.tdd.Domain.Entity.LectureHistory;
+import io.hhplus.tdd.architecture.tdd.domain.entity.Lecture;
+import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package io.hhplus.tdd.architecture.tdd;
 
-import io.hhplus.tdd.architecture.tdd.Infrastructure.Repository.Lecture.LectureRepository;
-import io.hhplus.tdd.architecture.tdd.Validation.LectureValidation;
+import io.hhplus.tdd.architecture.tdd.infrastructure.repository.lecture.LectureRepository;
+import io.hhplus.tdd.architecture.tdd.validation.LectureValidation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

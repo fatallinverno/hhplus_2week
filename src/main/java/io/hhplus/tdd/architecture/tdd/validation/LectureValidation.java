@@ -1,4 +1,4 @@
-package io.hhplus.tdd.architecture.tdd.Validation;
+package io.hhplus.tdd.architecture.tdd.validation;
 
 import org.springframework.stereotype.Component;
 
