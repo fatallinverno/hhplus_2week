@@ -10,6 +10,6 @@ public interface LectureService {
 
     List<Lecture> getLectureAll(LocalDate lectureDate);
     Lecture createLecture(String createTitle);
-    LectureHistory joinLecture(String userId, Long id);
+    LectureHistory joinLecture(String userId, Long lectureId);
 
 }

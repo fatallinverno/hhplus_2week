@@ -23,13 +23,6 @@ public class LectureServiceImpl implements LectureService {
     private final LectureHistoryRepository lectureHistoryRepository;
     private final LectureValidation lectureValidation;
 
-//    public LectureServiceImpl(LectureHistoryRepository lectureHistoryRepository, StudentRepository studentRepository, LectureRepository lectureRepository, LectureValidation lectureValidation) {
-//        this.lectureRepository = lectureRepository;
-//        this.lectureHistoryRepository = lectureHistoryRepository;
-//        this.studentRepository = studentRepository;
-//        this.lectureValidation = lectureValidation;
-//    }
-
     public List<Lecture> getLectureAll(LocalDate lectureDate) {
         return lectureRepository.findAllByLectureDate(lectureDate);
     }
@@ -46,8 +39,8 @@ public class LectureServiceImpl implements LectureService {
     }
 
     @Transactional
-    public LectureHistory joinLecture(String userId, Long id) {
-        Optional<Lecture> lecture = lectureRepository.findById(id);
+    public LectureHistory joinLecture(String userId, Long lectureId) {
+        Optional<Lecture> lecture = lectureRepository.findById(lectureId);
         boolean isLecture = lecture.isPresent();
         lectureValidation.lectureCheck(isLecture);
 
@@ -56,7 +49,7 @@ public class LectureServiceImpl implements LectureService {
         lectureValidation.userIdCheck(userId, idUser);
 
         LectureHistory lectureHistory = new LectureHistory();
-        lectureHistory.setId(id);
+        lectureHistory.setLectureId(lectureId);
         lectureHistory.setUserId(userId);
         lectureHistory.setJoinDate(LocalDate.now());
 
