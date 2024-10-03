@@ -8,11 +8,15 @@ import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("SELECT l FROM Lecture l WHERE l.id = :id")
-    Optional<Lecture> findByIdWithLock(Long id);
+    @Query("SELECT l.capacity FROM Lecture l WHERE l.lectureId = :lectureId")
+    int findByCapacityLock(Long lectureId);
+
+    List<Lecture> findAllByLectureDate(LocalDate lectureDate);
 }
