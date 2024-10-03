@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface LectureHistoryRepository extends JpaRepository<LectureHistory, Long> {
     @Query("SELECT l FROM LectureHistory l JOIN Lecture c on l.lectureId = c.lectureId WHERE l.userId = :userId AND l.lectureId = :lectureId")
-    Optional<Lecture> findByLectureUserId(String userId, Long lectureId);
+    Optional<LectureHistory> findByLectureUserId(String userId, Long lectureId);
 }
