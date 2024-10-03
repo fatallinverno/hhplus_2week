@@ -25,8 +25,4 @@ public class Lecture {
     @Column
     private LocalDate lectureDate;
 
-    public Lecture() {
-
-    }
-
 }
