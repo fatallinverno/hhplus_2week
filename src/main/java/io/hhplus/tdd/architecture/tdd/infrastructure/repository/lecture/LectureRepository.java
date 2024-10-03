@@ -14,6 +14,5 @@ import java.util.Optional;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
-    // 특정 날짜와 일치하는 모든 강의 찾기
     List<Lecture> findAllByLectureDate(LocalDate lectureDate);
 }
