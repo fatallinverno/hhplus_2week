@@ -50,28 +50,24 @@ public class LectureApplyTest {
             Thread thread = new Thread(() -> {
                 try {
                     lectureService.joinLecture(userId, 1L);
-                    results.add(true);  // 신청 성공 시
+                    results.add(true);
                 } catch (Exception e) {
-                    results.add(false);  // 신청 실패 시
+                    results.add(false);
                 }
             });
             threads.add(thread);
         }
 
-        // 3. 스레드 시작
         for (Thread thread : threads) {
             thread.start();
         }
 
-        // 4. 모든 스레드가 끝날 때까지 대기
         for (Thread thread : threads) {
             thread.join();
         }
 
-        // 5. 성공적인 신청자와 실패한 신청자 수 검증
         long successCount = lecture.getCapacity();
 
-        // 6. 30명만 성공했는지 검증
         assertEquals(0, successCount);
     }
 
