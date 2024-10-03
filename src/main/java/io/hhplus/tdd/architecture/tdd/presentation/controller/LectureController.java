@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -19,8 +20,8 @@ public class LectureController {
         this.lectureService = lectureService;
     }
 
-    public List<Lecture> getLectures() {
-        return lectureService.getLectureAll();
+    public List<Lecture> getLectures(LocalDate lectureDate) {
+        return lectureService.getLectureAll(lectureDate);
     }
 
     public Lecture createLecture(String createTitle) {

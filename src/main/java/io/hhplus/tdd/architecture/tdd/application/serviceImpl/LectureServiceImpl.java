@@ -30,8 +30,8 @@ public class LectureServiceImpl implements LectureService {
 //        this.lectureValidation = lectureValidation;
 //    }
 
-    public List<Lecture> getLectureAll() {
-        return lectureRepository.findAll();
+    public List<Lecture> getLectureAll(LocalDate lectureDate) {
+        return lectureRepository.findAllByLectureDate(lectureDate);
     }
 
     @Transactional
