@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,13 +23,6 @@ public class LectureServiceImpl implements LectureService {
     private final LectureHistoryRepository lectureHistoryRepository;
     private final LectureValidation lectureValidation;
     private final UserRepository userRepository;
-
-//    public LectureServiceImpl(LectureHistoryRepository lectureHistoryRepository, StudentRepository studentRepository, LectureRepository lectureRepository, LectureValidation lectureValidation) {
-//        this.lectureRepository = lectureRepository;
-//        this.lectureHistoryRepository = lectureHistoryRepository;
-//        this.studentRepository = studentRepository;
-//        this.lectureValidation = lectureValidation;
-//    }
 
     public List<Lecture> getLectureAll() {
         return lectureRepository.findAll();
@@ -61,7 +53,7 @@ public class LectureServiceImpl implements LectureService {
         //강의 잔여석 유무
         int capacity = lectureRepository.findByCapacityLock(lectureId);
 
-        if (capacity == 0) {
+        if (capacity <= 0) {
             throw new IllegalArgumentException("해당 강의에는 잔여석이 없어 신청할 수가 없습니다.");
         }
 
