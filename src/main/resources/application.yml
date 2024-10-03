@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: create
+    defer-datasource-initialization: true
+  datasource:
+  #database:
+    #url: jdbc:h2:tcp://localhost:8082/~/testdb
+    url : jdbc:h2:mem:testdb
+    username: sa
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+      data-locations: classpath:sql/data.sql
