@@ -23,7 +23,7 @@ public class Lecture {
     private String teacherName;
 
     @Column
-    private int capacity = 30;
+    private int capacity;
 
     @Column
     private LocalDate lectureDate;
