@@ -6,7 +6,6 @@ import io.hhplus.tdd.architecture.tdd.domain.entity.LectureHistory;
 import io.hhplus.tdd.architecture.tdd.domain.entity.User;
 import io.hhplus.tdd.architecture.tdd.infrastructure.repository.history.LectureHistoryRepository;
 import io.hhplus.tdd.architecture.tdd.infrastructure.repository.lecture.LectureRepository;
-import io.hhplus.tdd.architecture.tdd.infrastructure.repository.user.UserRepository;
 import io.hhplus.tdd.architecture.tdd.validation.LectureValidation;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,6 @@ public class LectureServiceImpl implements LectureService {
     private final LectureRepository lectureRepository;
     private final LectureHistoryRepository lectureHistoryRepository;
     private final LectureValidation lectureValidation;
-    private final UserRepository userRepository;
 
 //    public LectureServiceImpl(LectureHistoryRepository lectureHistoryRepository, StudentRepository studentRepository, LectureRepository lectureRepository, LectureValidation lectureValidation) {
 //        this.lectureRepository = lectureRepository;
@@ -48,32 +46,19 @@ public class LectureServiceImpl implements LectureService {
     }
 
     @Transactional
-    public LectureHistory joinLecture(String userId, Long lectureId) {
-        //강의 유무
-        lectureRepository.findById(lectureId).orElseThrow(() -> new IllegalArgumentException("강의 정보가 없습니다."));
+    public LectureHistory joinLecture(String userId, Long id) {
+        Optional<Lecture> lecture = lectureRepository.findById(id);
+        boolean isLecture = lecture.isPresent();
+        lectureValidation.lectureCheck(isLecture);
 
-        //유저 유무
-        userRepository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("유저 정보가 없습니다."));
-
-        //유저 강의 신청 여부
-        lectureHistoryRepository.findByLectureUserId(userId, lectureId).orElseThrow(() -> new IllegalArgumentException("이미 신청한 강의 입니다."));
-
-        //강의 잔여석 유무
-        int capacity = lectureRepository.findByCapacityLock(lectureId);
-
-        if (capacity == 0) {
-            throw new IllegalArgumentException("해당 강의에는 잔여석이 없어 신청할 수가 없습니다.");
-        }
+        User user = new User();
+        String idUser = user.getUserId();
+        lectureValidation.userIdCheck(userId, idUser);
 
         LectureHistory lectureHistory = new LectureHistory();
-        lectureHistory.setLectureId(lectureId);
+        lectureHistory.setId(id);
         lectureHistory.setUserId(userId);
         lectureHistory.setJoinDate(LocalDate.now());
-
-        Lecture lecture = new Lecture();
-        lecture.setLectureId(lectureId);
-        lecture.setCapacity(lecture.getCapacity() - 1);
-        lectureRepository.save(lecture);
 
         return lectureHistoryRepository.save(lectureHistory);
     }
