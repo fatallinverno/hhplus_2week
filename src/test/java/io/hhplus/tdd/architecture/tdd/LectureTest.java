@@ -42,13 +42,13 @@ class LectureTest {
         LocalDate today = LocalDate.now();
 
         Lecture lecture1 = new Lecture();
-        lecture1.setId(1L);
+        lecture1.setLectureId(1L);
         lecture1.setTitle("Java");
         lecture1.setTeacherName("자바");
         lecture1.setLectureDate(today);
 
         Lecture lecture2 = new Lecture();
-        lecture2.setId(2L);
+        lecture2.setLectureId(2L);
         lecture2.setTitle("Python");
         lecture2.setTeacherName("파이썬");
         lecture2.setLectureDate(today);
@@ -72,13 +72,13 @@ class LectureTest {
     public void testJoinLecture() {
         //Given
         LectureHistory lecture = new LectureHistory();
-        lecture.setId(1L);
+        lecture.setLectureId(1L);
         lecture.setTitle("Java");
         lecture.setTeacherName("이경록");
         lecture.setUserId("LKR");
 
         String userId = lecture.getUserId();
-        Long lectureId = lecture.getId();
+        Long lectureId = lecture.getLectureId();
 
         when(lectureService.joinLecture(userId, lectureId)).thenReturn(lecture);
 
