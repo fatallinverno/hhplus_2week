@@ -42,22 +42,7 @@ public class LectureApplyTest {
 
     @Test
     public void testLectureApply() throws InterruptedException {
-        // 1. 테스트용 유저 및 강의 생성
-//        lecture.setLectureId(1L);
-//        lecture.setTitle("Java");
-//        lecture.setTeacherName("이경록");
-//        lecture.setCapacity(30);  // 잔여석 30명
-//        lectureRepository.save(lecture);
-        Long lectureSeq = 1L;
-
-
-//        for (int i = 1; i <= 40; i++) {
-//            User user = new User();
-//            user.setUserId("user" + i);
-//            userRepository.save(user);
-//        }
-
-        // 2. 40명의 사용자들이 동시에 신청하도록 스레드 생성
+        // 1. 40명의 사용자들이 동시에 신청하도록 스레드 생성
         List<Thread> threads = new ArrayList<>();
         List<Boolean> results = Collections.synchronizedList(new ArrayList<>());
 
@@ -65,7 +50,7 @@ public class LectureApplyTest {
             final String userId = "user" + i;
             Thread thread = new Thread(() -> {
                 try {
-                    lectureService.joinLecture(userId, lectureSeq);
+                    lectureService.joinLecture(userId, 1L);
                     results.add(true);  // 신청 성공 시
                 } catch (Exception e) {
                     results.add(false);  // 신청 실패 시
