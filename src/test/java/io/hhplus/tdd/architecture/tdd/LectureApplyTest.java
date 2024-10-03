@@ -24,16 +24,7 @@ public class LectureApplyTest {
     @Autowired
     private LectureService lectureService;
 
-    @Autowired
-    private LectureRepository lectureRepository;
-
-    @Autowired
-    private LectureHistoryRepository lectureHistoryRepository;
-
     private Lecture lecture;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @BeforeEach
     void setUp() {
