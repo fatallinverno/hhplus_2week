@@ -2,11 +2,6 @@ package io.hhplus.tdd.architecture.tdd;
 
 import io.hhplus.tdd.architecture.tdd.application.service.LectureService;
 import io.hhplus.tdd.architecture.tdd.domain.entity.Lecture;
-import io.hhplus.tdd.architecture.tdd.domain.entity.User;
-import io.hhplus.tdd.architecture.tdd.infrastructure.repository.history.LectureHistoryRepository;
-import io.hhplus.tdd.architecture.tdd.infrastructure.repository.lecture.LectureRepository;
-import io.hhplus.tdd.architecture.tdd.infrastructure.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
