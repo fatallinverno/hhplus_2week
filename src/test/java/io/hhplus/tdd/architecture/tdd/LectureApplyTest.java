@@ -70,11 +70,9 @@ public class LectureApplyTest {
 
         // 5. 성공적인 신청자와 실패한 신청자 수 검증
         long successCount = lecture.getCapacity();
-//        long failureCount = results.size() - successCount;
 
         // 6. 30명만 성공했는지 검증
         assertEquals(0, successCount);
-//        assertEquals(10, failureCount);
     }
 
 }
