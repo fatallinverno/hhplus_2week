@@ -49,6 +49,7 @@ public class LectureApplyTest {
             final String userId = "user" + i;
             Thread thread = new Thread(() -> {
                 try {
+                    lectureService.joinLecture(userId, 1L);
                     results.add(true);  // 신청 성공 시
                 } catch (Exception e) {
                     results.add(false);  // 신청 실패 시
