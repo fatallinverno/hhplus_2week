@@ -28,13 +28,13 @@ public class LectureValidationTest {
     }
 
     @Test
-    @DisplayName("강의 유무 체크")
+    @DisplayName("중복 강의 체크")
     public void testLectureCheck() {
         //Given
-        boolean lecetureChk = true;
+        boolean lecetureChk = false;
 
         //When & Then
-        assertDoesNotThrow(() -> sut.lectureCheck(lecetureChk));
+        assertDoesNotThrow(() -> sut.joinLectureCheck(lecetureChk));
     }
 
     @Test
