@@ -11,9 +11,9 @@ public class LectureValidation {
         }
     }
 
-    public void lectureCheck(boolean lectureId) {
-        if(!lectureId) {
-            throw new IllegalArgumentException("등록되지 않은 강의 입니다.");
+    public void joinLectureCheck(boolean optionalLectureHistory) {
+        if(optionalLectureHistory) {
+            throw new IllegalArgumentException("이미 신청한 강의 입니다.");
         }
     }
 
